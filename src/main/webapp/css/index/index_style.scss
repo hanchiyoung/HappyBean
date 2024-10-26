@@ -1,0 +1,168 @@
+@charset "utf-8";
+$colors: (
+  primary: #41b25e,
+  secondary: #10c838,
+  third: #0f92e0,
+  base: #fafafa,
+  rgba: rgba(0, 0, 0, 0.11),
+);
+
+@mixin bgi($y, $x) {
+  background-image: url(./../../images/common/icons.png);
+  background-size: 807px 758px;
+  background-position: $y $x;
+}
+
+
+
+// ==============================================
+
+@mixin flex($justyfy){
+  display: flex;
+  justify-content: $justyfy;
+  align-items: center;
+}
+
+
+section {
+  position: relative;
+
+  > #banner_bg {
+    width: 100%;
+    height: 300px;
+    background-color: #41c982;
+
+  }
+
+  &#index_main {
+    article.funding {
+      .item_list.list_style_2 li {
+        width: calc(100% / 3);
+      }
+    }
+  }
+
+    #banner_wrap {     
+      position: absolute;
+      top: 40px;
+      left: 50%; 
+      transform: translateX(-50%);
+      width: 100%;
+      overflow: hidden;
+
+      > ul.banner_list {
+        position: relative;
+        height: 300px;
+
+        > li {
+          position: absolute;
+          top: 0;
+          left: 100%;
+          transform: translateX(0%);
+          display: none;          
+          width: 1140px;
+          transition: all 0.3s ease-in-out;
+
+          &.in {
+            display: block;
+            left: 50%;
+            transform: translateX(-50%);
+          }
+
+          &.out {
+            display: block;
+            left: -100%;
+            transform: translateX(0);
+          }
+
+          > a {
+            display: block;
+
+            > img {
+              display: block;
+              width: 100%;
+              height: auto;
+            }
+          }
+        }
+      }//end of banner_list
+
+      > .btn_wrap {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 1240px;
+        height: 60px;
+
+        button {
+          position: absolute;
+          top: 50%;
+          width: 30px;
+          height: 30px;
+          background: none;
+          border: 1px solid;
+          border-color: #fff #fff transparent transparent;
+
+          &#prev_btn {
+            left: 20px;
+            transform: translateY(-50%) rotate(-135deg);
+          }
+
+          &#next_btn {
+            right: 20px;
+            transform: translateY(-50%) rotate(45deg);
+          }
+
+          &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: -24px;
+            left: -4px;
+            width: 50px;
+            height: 60px;
+            transform: rotate(-45deg);
+            // background-color: rgba($color: #000000, $alpha: 0.1);
+          }          
+        }
+      }      
+    }//banner
+
+    article {
+      // max-width: 1140px;
+      margin: 0 auto;
+      padding-top: 60px;
+
+      &.donation {
+        margin-top: 20px;
+      }
+
+      > h3.list_title {
+        padding-bottom: 20px;
+        > a {
+          position: relative;
+          font-size: 1.5em;
+
+          &::after{
+            content: '';
+            display: block;
+            position: absolute;
+            top: 50%;
+            right: -20px;
+            transform: translateY(-50%) rotate(45deg);
+            width: 10px;
+            height: 10px;
+            border: 1px solid;
+            border-color: #222 #222 transparent transparent;
+          }
+        }
+      }//end of h3.list_title
+
+      
+
+
+
+     
+    }//article
+  }//section

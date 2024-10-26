@@ -1,0 +1,372 @@
+@charset "utf-8";
+
+$colors: (
+  primary: #41b25e,
+  secondary: #10c838,
+  third: #0f92e0,
+  base: #fafafa,
+  rgba: rgba(0, 0, 0, 0.11),
+);
+
+@mixin bgi($y, $x) {
+  background-image: url(./../../images/common/icons_ver_3.png);
+  background-size: 679px 400px;
+  background-position: $y $x;
+}
+
+@mixin flex($direction, $wrap, $justify) {
+  display: flex;
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+  justify-content: $justify;
+  align-items: center;
+}
+
+section#payment {
+  div.title_wrap {
+    @include flex(column, wrap, center);
+    position: relative;
+    width: 100%;
+    height: 110px;
+
+    > h2.payment_title {
+      margin-bottom: 10px;
+      font-size: 1.5em;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    > p.host {
+      color: #888;
+      font-size: 0.75em;
+    }
+
+    > button.page_back {
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 37px;
+      @include bgi(0, -200px);
+      background-color: transparent;
+      outline: none;
+      border: none;
+    }
+  } //end of title_wrap
+
+  > hr.border {
+    display: block;
+    border: none;
+    border-bottom: 1px solid map-get($map: $colors, $key: rgba);
+  }
+
+  > nav.payment_choose_wrap {
+    > ul.choose_list {
+      @include flex(row, wrap, space-between);
+      margin-top: 30px;
+
+      > li {
+        width: 50%;
+        border-top: 1px solid map-get($map: $colors, $key: rgba);
+        border-left: 1px solid map-get($map: $colors, $key: rgba);
+        box-sizing: border-box;
+
+        &:last-child {
+          border-right: 1px solid map-get($map: $colors, $key: rgba);
+        }
+
+        > input[type="radio"] {
+          &#amountPay + label::after {
+            width: 205px;
+            background-position: -460px 0;
+          }
+
+          &#amountPay:checked + label {
+            background-color: #fff;
+
+            &::after {
+              background-position: -460px -30px;
+            }
+          }
+
+          &#regularPay + label::after {
+            width: 162px;
+            background-position: -230px 0;
+          }
+
+          &#regularPay:checked + label {
+            background-color: #fff;
+
+            &::after {
+              background-position: -230px -30px;
+            }
+          }
+        } //end of input[type="radio"]
+
+        > label {
+          display: block;
+          position: relative;
+          @include flex(row, nowrap, center);
+          width: 100%;
+          height: 118px;
+          background-color: map-get($map: $colors, $key: base);
+
+          &::after {
+            content: "";
+            display: block;
+            height: 23px;
+            background-image: url(./../../images/common/icons_ver_3.png);
+            background-size: 679px 400px;
+            background-repeat: no-repeat;
+          }
+        }
+      }
+    }
+  } // end of nav
+
+  section#payment_form_wrap {
+    padding: 79px 93px 89px;
+    border: 1px solid map-get($map: $colors, $key: rgba);
+    box-sizing: border-box;
+
+    > div.title_wrap {
+      padding-bottom: 50px;
+      border-bottom: 1px solid #888;
+
+      > h2.slogan {
+        font-size: 2em;
+        margin-bottom: 20px;
+      }
+
+      > p.sub_slogan {
+        color: #888;
+      }
+    }
+
+    > form {
+      > ul.pay_list {
+
+        > li {
+          font-size: 0.88em;
+
+          h3 {
+            display: inline-block;
+            padding-left: 20px;
+            font-size: 1em;
+          }
+
+          &.bean_info_frame {
+            line-height: 50px;
+
+            > h3 {
+              margin-right: 15%;
+              height: 50px;
+            }
+
+            > strong {
+              font-size: 1.2em;
+
+              &.current_bean {
+                margin-right: 3px;
+                color: map-get($map: $colors, $key: primary);
+              }
+            }
+
+            > div.bean_desc_box {
+              overflow: hidden;
+              height: 0px;
+              padding: 0 20px;
+              line-height: 2em;
+              background-color: map-get($map: $colors, $key: base);
+              border-top: 1px solid map-get($map: $colors, $key: rgba);
+              box-sizing: border-box;
+              // transition: all 0.3s ease-in;
+            }
+
+            > label[for="descOpen"] {
+              display: inline-block;
+              margin-left: 30%;
+              width: 40px;
+              height: 11px;
+              @include bgi(-540px, -140px);
+            }
+
+            > input:checked {
+              & + label[for="descOpen"] {
+                background-position: -540px -120px;
+              }
+
+              & + label + div.bean_desc_box {
+                padding: 20px 20px;
+                height: 100px;
+                border: 1px solid;
+                border-color: map-get($map: $colors, $key: rgba) transparent;
+              }
+            } //end of input:checked
+          } //end of &.bean_info_frame
+
+          &.pay_choose_frame {
+            @include flex(row, nowrap, flex-start);
+            height: 70px;
+            padding: 10px 0;
+
+
+
+            > h3 {
+              margin-right: 5%;
+            }
+
+            > input {
+              &[name="payBean"] {
+                position: relative;
+                width: 220px;
+                height: 50px;
+                margin-right: 5px;
+                padding: 10px;
+                color: map-get($map: $colors, $key: primary);
+                font-size: 2em;
+                font-weight: 600;
+                text-align: right;
+                border: 1px solid map-get($map: $colors, $key: rgba);
+                box-sizing: border-box;
+                outline: none;
+
+                &::-webkit-outer-spin-button,
+                &::-webkit-inner-spin-button {
+                  -webkit-appearance: none;
+                  margin: 0;
+                }
+
+                &::placeholder {
+                  color: map-get($map: $colors, $key: primary);
+                }
+
+                & + span {
+                  margin-right: 20px;
+                  color: #888;
+                  font-weight: 600;
+                }                
+              }
+            } //end of input
+
+            > label {
+              margin-right: 5px;
+              padding : 5px 10px;
+              color: #888;
+              font-size: 0.88em;
+              background-color: map-get($map: $colors, $key: base);
+              border: 1px solid map-get($map: $colors, $key: rgba);
+
+              &[for="fullAmount"] {
+                color: map-get($map: $colors, $key: primary);
+                font-weight: 600;
+              }
+            }//end of label
+          }
+
+          &.pay_notice_frame {
+            padding: 20px 20px;
+            height: 100px;
+            line-height: 2em;
+            border: 1px solid;
+            background-color: map-get($map: $colors, $key: base);
+            border-color: map-get($map: $colors, $key: rgba) transparent;
+            box-sizing: border-box;
+
+            > strong {
+              color: map-get($map: $colors, $key: primary);
+            }
+
+          }
+
+          &.agree_frame {
+            padding: 20px;
+
+            > .agree_list {
+              > li {
+                padding-top: 15px;
+
+                &.terms_desc_box {
+                  padding-top: 0;
+
+                  p.terms_preview {
+                    overflow-x: hidden;
+                    overflow-y: auto;
+                    width: calc(100% - 40px);
+                    height: 192px;
+                    margin: 20px auto 0;
+                    padding: 20px;
+                    color: #888;
+                    font-size: 0.9em;
+                    line-height: 1.5em;
+                    white-space: pre-wrap;
+                    unicode-bidi: isolate;
+                    border: 1px solid map-get($map: $colors, $key: rgba);
+                  }
+                }//end of &.terms_desc_box
+
+                > input {
+
+                  & + label {
+                    display: inline-block;
+                    position: relative;
+                    padding-left: 30px;
+  
+                    &::after {
+                      content: '';
+                      display: block;
+                      position: absolute;
+                      top: 50%;
+                      left: 0;
+                      margin-top: -14px;
+                      width: 28px;
+                      height: 28px;
+                      background-image: url(./../../images/common/icons.png);
+                      background-size: 807px 758px;
+                      background-position: -174px -571px;
+                      transform: scale(0.7);
+                    }
+                  }
+  
+                  &:checked + label::after {
+                    background-position: -210px -571px;
+                  } 
+                }//end of input
+              }
+            }//end of ul.agree_list            
+          }
+        }// end of li
+      }// end of ul.pay_list
+      
+      > div.btn_box {
+        @include flex(row, nowrap, center);
+        gap: 10px;
+        margin-top: 40px;
+        padding-top: 30px;
+        border-top: 1px solid map-get($map: $colors, $key: rgba);
+
+        > button {
+          width: 170px;
+          height: 40px;
+          outline: none;
+          background-color: transparent;
+          border: 1px solid #888;
+          border-radius: 5px;
+
+          &:hover,
+          &[type="submit"] {
+            color: #fff;
+            background-color: map-get($map: $colors, $key: secondary);
+            border-color: map-get($map: $colors, $key: primary);
+          }
+        }
+      }
+
+
+    } //form
+  } //end of section#payment_form_wrap
+} //end of section#payment

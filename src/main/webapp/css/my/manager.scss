@@ -1,0 +1,321 @@
+@charset "utf-8";
+
+$colors: (
+	primary: #41b25e,
+	secondary: #10c838,
+	third: #0f92e0,
+	base: #fafafa,
+	rgba: rgba(0, 0, 0, 0.11),
+);
+
+@mixin flex($direction, $wrap, $justify) {
+	display: flex;
+	flex-direction: $direction;
+	flex-wrap: $wrap;
+	justify-content: $justify;
+	align-items: center;
+}
+
+@mixin bgi($y, $x) {
+	background-image: url(./../../images/common/icons.png);
+	background-size: 807px 758px;
+	background-repeat: no-repeat;
+	background-position: $y $x;
+}
+
+// y -163px
+// x -756px
+@import "user_info";
+
+section#user_info_list_wrap.w_max {
+	div.user_name_box {
+		div.icon.manager {
+			@include bgi(-5px, -438px);
+			border-radius: 50% 50%;
+		}
+	} //end of div.user_name_box
+} //end of section#user_info_list_wrap.w_max
+
+section#item_list_wrap {
+	padding-bottom: 40px;
+	> h2 {
+		position: relative;
+		margin-left: 40px;
+		padding: 40px 0;
+
+		&::before {
+			content: "";
+			display: block;
+			position: absolute;
+			top: 50%;
+			left: -40px;
+			width: 36px;
+			height: 34px;
+			margin-top: -17px;
+		}
+
+		&.donation_title::before {
+			@include bgi(-756px, -163px);
+		}
+		&.funding_title::before {
+			height: 36px;
+			margin-top: -20px;
+			@include bgi(-521px, -390px);
+		}
+
+		&.campaign_title::before {
+			@include bgi(-491px, -286px);
+		}
+	}
+
+	> div.filter_box {
+		@include flex(row, nowrap, space-between);
+		padding-bottom: 15px;
+
+		> a.writeBtn {
+			padding: 5px 10px;
+			color: #fff;
+			font-size: 0.75em;
+			font-weight: 600;
+			background-color: map-get($map: $colors, $key: primary);
+			border: 1px solid map-get($map: $colors, $key: secondary);
+			border-radius: 5px;
+		}
+
+		> select {
+			border: 1px solid map-get($map: $colors, $key: rgba);
+
+			padding: 5px;
+		}
+	}
+
+	 table {
+		width: 100%;
+		margin-bottom: 20px;
+		border: 2px solid;
+		border-color: map-get($map: $colors, $key: rgba) transparent map-get($map: $colors, $key: rgba) transparent;
+
+		tr {
+			height: 50px;
+			border-bottom: 1px solid map-get($map: $colors, $key: rgba);
+
+			&:first-child {
+				height: 0;
+				border: none;
+			}
+
+			&:last-child {
+				border: none;
+			}
+
+			&.table_header {
+				background-color: map-get($map: $colors, $key: base);
+			}
+
+			&:hover {
+				background-color: map-get($map: $colors, $key: base);
+
+				> td {
+					> a {
+						color: map-get($map: $colors, $key: primary);						
+					}
+					.btn {
+						color: #fff;
+					}
+				}
+			}
+
+			td {
+				font-size: 0.75em;
+				text-align: center;
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				word-break: break-all;
+
+				> p.status {
+					display: inline-block;
+					padding: 5px 10px;
+					color: #fff;
+					border: 1px solid map-get($map: $colors, $key: rgba);
+					border-radius: 3px;
+
+					&.on {
+						background-color: map-get($map: $colors, $key: primary);
+					}
+					&.off {
+						color: #aaa;
+						background-color: map-get($map: $colors, $key: rgba);
+					}
+				}
+
+				.btn {
+					color: #fff;
+					padding: 5px 10px;
+					border: 1px solid map-get($map: $colors, $key: rgba);
+					border-radius: 3px;
+
+					&.edit {
+						background-color: map-get($map: $colors, $key: third);
+					}
+
+					&.delete {
+						background-color: #ed5a5a;
+					}
+				}
+			}
+		}
+	} //end of table
+
+	nav.page_index_wrap {
+		position: relative;
+		width: 100%;
+		margin: 0 auto;
+		@include flex(row, nowrap, center);
+
+		> ul.page_index {
+			width: 40%;
+			padding: 0 20px;
+			@include flex(row, nowrap, space-between);
+
+			> li {
+				> a {
+					color: #ccc;
+					font-size: 0.75em;
+				}
+
+				&.currnet {
+					> a {
+						color: map-get($map: $colors, $key: primary);
+						font-weight: 600;
+					}
+				}
+			}
+		}
+
+		button {
+			border: none;
+			background: none;
+			outline: none;
+			color: #ccc;
+
+			&.deleteBtn {
+				position: absolute;
+				left: 10px;
+				padding: 3px 10px;
+				color: #fff;
+				font-size: 0.75em;
+				font-weight: 600;
+				background-color: map-get($map: $colors, $key: primary);
+				border: 1px solid map-get($map: $colors, $key: secondary);
+				border-radius: 5px;
+			}
+		}
+	}
+}
+
+//write style
+
+section#item_write_wrap {
+	padding-bottom: 40px;
+	> h2 {
+		position: relative;
+		margin-left: 40px;
+		padding: 40px 0;
+
+		&::before {
+			content: "";
+			display: block;
+			position: absolute;
+			top: 50%;
+			left: -40px;
+			width: 36px;
+			height: 34px;
+			margin-top: -17px;
+		}
+
+		&.donation_title::before {
+			@include bgi(-756px, -163px);
+		}
+		&.funding_title::before {
+			height: 36px;
+			margin-top: -20px;
+			@include bgi(-521px, -390px);
+		}
+
+		&.campaign_title::before {
+			@include bgi(-491px, -286px);
+		}
+	}
+
+	table.write {
+		border: 1px solid #ddd;
+		tr {
+			height: 40px;
+			border-bottom: 1px solid map-get($map: $colors, $key: rgba);
+
+			&:first-child {
+				border: none;
+				height: 0;
+			}
+
+			th {
+				background-color: map-get($map: $colors, $key: base);
+				border-right: 1px solid map-get($map: $colors, $key: rgba);
+				border-left: 1px solid map-get($map: $colors, $key: rgba);
+			}
+
+			td {
+				input[type="number"],
+				input[type="text"] {
+					width: 100%;
+					height: 40px;
+					padding: 3px 10px;
+					box-sizing: border-box;
+					&:focus {
+						border: 1px solid map-get($map: $colors, $key: primary);
+						outline: none;
+					}
+				}
+
+				input[type="date"] {
+					width: 95%;
+					margin: 0 auto;
+					padding-left: 10px;
+					box-sizing: border-box;
+
+					&:focus {
+						outline: none;
+					}
+				}
+
+				> p {
+					padding-left: 10px;
+					color: #888;
+					font-size: 0.8em;
+					line-height: 1.5em;
+				}
+
+				select {
+					width: 95%;
+					margin: 0 auto;
+
+					&:focus {
+						outline: none;
+					}
+				}
+
+				textarea {
+					width: 100%;
+					height: 400px;
+					padding: 10px;
+					box-sizing: border-box;
+
+					&:focus {
+						outline: none;
+					}
+				}
+			}
+		}
+	}
+}

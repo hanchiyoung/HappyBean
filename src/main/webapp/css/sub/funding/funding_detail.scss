@@ -1,0 +1,469 @@
+@charset "UTF-8";
+
+$colors: (
+	primary: #41b25e,
+	secondary: #10c838,
+	third: #0091ff,
+	base: #fafafa,
+	rgba: rgba(0, 0, 0, 0.11),
+);
+
+@mixin bgi($x, $y) {
+	background-image: url(./../../../images/common/icons.png);
+	background-size: 807px 758px;
+	background-position: $x $y;
+}
+
+@mixin flex($direction, $wrap, $justify) {
+	display: flex;
+	flex-direction: $direction;
+	flex-wrap: $wrap;
+	justify-content: $justify;
+	align-items: flex-start;
+}
+//////////////////////////////////////////////////////////
+#wrap {
+	padding: 40px 0;
+
+	> hr.border {
+		display: block;
+		border: none;
+		border-top: 1px solid map-get($map: $colors, $key: rgba);
+	}
+}
+
+section#detail_header_box {
+	@include flex(row, nowrap, space-between);
+	gap: 30px;
+
+	> div.thumb_box {
+		width: 70%;
+
+		img {
+			display: block;
+			width: 100%;
+			height: auto;
+		}
+	}
+	> div.info_box {
+		width: 30%;
+
+		> ul.item_info_list {
+			> li {
+				padding: 5px 0;
+
+				&.d_day {
+					p {
+						display: inline-block;
+						padding: 5px 10px;
+						color: #fff;
+						font-size: 0.9em;
+						font-weight: 600;
+						background-color: #ed5a5a;
+						border-radius: 30px;
+					}
+				} //end of D-day
+
+				&.title {
+					h3 {
+						font-size: 2em;
+						line-height: 1.3em;
+					}
+				} //end of title
+
+				&.goal_info {
+					h4 {
+						color: map-get($map: $colors, $key: third);
+						font-size: 1.5em;
+						font-weight: 400;
+						text-align: right;
+
+						> span.prog_num {
+							font-size: 32px;
+							font-weight: 600;
+						}
+					}
+
+					div.prog_bar {
+						height: 4px;
+						margin: 10px 0;
+						background-color: #eee;
+
+						> strong {
+							display: block;
+							height: 4px;
+							background-color: map-get($map: $colors, $key: third);
+						}
+					}
+
+					div.amount_wrap {
+						@include flex(row, nowrap, space-between);
+						p.goal_amount {
+							color: #888;
+						}
+						p.rased_amount {
+							font-size: 1.1em;
+
+							strong {
+								font-size: 1.3em;
+							}
+						}
+					}
+				} //end of prog_bar
+
+				&.company_info {
+					@include flex(row, nowrap, flex-start);
+					align-items: center;
+					padding: 10px 0 20px;
+					border-bottom: 1px solid #eee;
+
+					> p.company_icon {
+						width: 53px;
+						height: 48px;
+						margin-right: 20px;
+						@include bgi(-604px, -675px);
+					}
+					> div.name_wrap {
+						> p {
+							line-height: 1.3em;
+
+							&.company_slo {
+								color: #888;
+								font-size: 0.9em;
+							}
+						}
+					}
+				}
+
+				&.reward_choose {
+					> form {
+						padding-top: 15px;
+
+						select {
+							width: 100%;
+							height: 40px;
+							padding: 5px;
+							border: 1px solid map-get($map: $colors, $key: rgba);
+							outline: none;
+						}
+
+						div.option_list_wrap {
+							position: relative;
+							margin-top: 20px;
+
+							> div#option_container {
+								> div.option_selected_info {
+									position: relative;
+									height: 60px;
+									padding: 15px;
+									font-size: 0.85em;
+									border-top: 1px solid #ddd;
+
+									&:last-child {
+										border-bottom: 1px solid #ddd;
+									}
+
+
+									> button {
+										position: relative;
+										width: 32px;
+										height: 32px;
+										background-color: #fff;
+										border: 1px solid map-get($map: $colors, $key: rgba);
+										outline: none;
+
+										&.delete {
+											position: absolute;
+											top: 15px;
+											right: 15px;
+											margin-top: 3px;
+											width: 13px;
+											height: 13px;
+											@include bgi(-301px, -635px);
+											border: none;
+											opacity: 0.5;
+										}
+
+										&.plus {
+											margin-left: -4px;
+
+											&::before {
+												content: '';
+												position: absolute;
+												top: 50%;
+												left: 50%;
+												margin-top: -1px;
+												margin-left: -5px;
+												width: 10px;
+												height: 2px;
+												background-color: #ccc;
+											}
+
+											&::after {
+												content: '';
+												position: absolute;
+												top: 50%;
+												left: 50%;
+												margin-top: -5px;
+												margin-left: -1px;
+												width: 2px;
+												height: 10px;
+												background-color: #ccc;
+											}
+										}
+
+										&.minus {
+											margin-top: 10px;
+											&::before {
+												content: '';
+												position: absolute;
+												top: 50%;
+												left: 50%;
+												margin-top: -1px;
+												margin-left: -5px;
+												width: 10px;
+												height: 2px;
+												background-color: #ccc;
+											}
+										}
+									}
+
+									> input.option_volume {
+										display: inline-block;
+										width: 50px;
+										height: 30px;
+										transform: translateY(-10px);
+										margin-left: -3px;
+										text-align: center;
+										border-top: 1px solid map-get($map: $colors, $key: rgba);
+										border-bottom: 1px solid map-get($map: $colors, $key: rgba);
+										outline: none;
+									}
+
+									> p {
+
+										&.option_title {
+											color: #888;
+										}
+
+										&.option_price {
+											position: absolute;
+											bottom: 25px;
+											right: 15px;
+										}
+
+										strong {
+											font-weight: 400;
+
+											&.price {
+												font-weight: 800;
+											}
+										}
+									}
+									
+								}
+							} //end of option_container
+						}
+
+						div.reward_total {
+							@include flex(row, nowrap, space-between);
+							align-items: center;
+							margin-bottom: 15px;
+							padding: 20px 0 10px;
+							border-bottom: 1px solid map-get($map: $colors, $key: rgba);
+
+							> p.total_count {
+								color: #888;
+								font-size: 0.9em;
+								span {
+									margin-left: 10px;
+								}
+							}
+							> p.total_amount {
+								font-weight: 800;
+								span {
+									color: map-get($map: $colors, $key: third);
+								}
+
+								strong {
+									margin-left: 20px;
+									font-size: 1.5em;
+								}
+							}
+						}
+
+						div.delivery_info {
+							@include flex(row, nowrap, flex-start);
+							font-size: 0.9em;
+							line-height: 1.5em;
+							color: #888;
+
+							> p.title {
+								position: relative;
+								width: 70px;
+
+								&::after {
+									content: "";
+									position: absolute;
+									top: 50%;
+									right: 15px;
+									transform: translateY(-50%);
+									width: 2px;
+									height: 15px;
+									border-right: 1px solid map-get($map: $colors, $key: rgba);
+								}
+							}
+
+							> p {
+								strong {
+									color: #333;
+								}
+							}
+						} //end of reward
+
+						div.button_wrap {
+							position: relative;
+							@include flex(row, nowrap, space-between);
+							gap: 10px;
+							padding: 20px 0 30px;
+							> button[type="submit"] {
+								width: 80%;
+								height: 52px;
+								color: #fff;
+								font-size: 1.2em;
+								font-weight: 600;
+								background-color: map-get($map: $colors, $key: third);
+								border: none;
+								outline: none;
+								border-radius: 3px;
+							}
+
+							> label {
+								display: block;
+								position: relative;
+								width: 49px;
+								height: 49px;
+								border: 1px solid map-get($map: $colors, $key: rgba);
+								border-radius: 3px;
+
+								&::after {
+									content: "";
+									display: block;
+									position: absolute;
+									top: 50%;
+									left: 50%;
+									transform: translateY(-50%) translateX(-50%);
+									margin-top: -2px;
+									margin-left: 3px;
+									width: 28px;
+									height: 26px;
+									@include bgi(-602px, -518px);
+								}
+							}
+
+							> input[type="checkbox"] {
+								&:checked + div.share_url_box {
+									display: block;
+								}
+							}
+
+							> div.share_url_box {
+								display: none;
+								position: absolute;
+								top: 80px;
+								left: 0;
+								width: 100%;
+								height: 70px;
+								padding: 15px;
+								box-sizing: border-box;
+								box-shadow: 0px 0px 5px map-get($map: $colors, $key: rgba);
+								background-color: map-get($map: $colors, $key: base);
+
+								> p.page_URL {
+									@include flex(row, nowrap, space-between);
+									cursor: pointer;
+									> span {
+										display: inline-block;
+										overflow: hidden;
+										width: calc(100% - 60px);
+										padding: 0 10px;
+										color: map-get($map: $colors, $key: third);
+										font-size: 0.75em;
+										line-height: 38px;
+										white-space: nowrap;
+										text-overflow: ellipsis;
+										border: 1px solid map-get($map: $colors, $key: rgba);
+										border-right: none;
+										border-radius: 8px 0 0 8px;
+										box-sizing: border-box;
+									}
+									> button {
+										width: 60px;
+										height: 40px;
+										color: #888;
+										font-size: 0.8em;
+										background-color: #f4f4f5;
+										border: 1px solid map-get($map: $colors, $key: rgba);
+										border-radius: 0 8px 8px 0;
+									}
+								}
+							}
+						}
+					} //end of form
+				}
+			} //end of li
+		}
+	} //end of info_box
+} //end of detali_header_box
+
+section#detail_content_box {
+	@include flex(row, nowrap, space-between);
+	padding: 20px 0;
+
+	> div.content_wrap {
+		width: 70%;
+
+		> h3 {
+			padding: 40px 0 30px;
+			font-size: 1.38em;
+
+			&.reward_info {
+				font-size: 1.75em;
+				margin-bottom: 50px;
+			}
+		}
+
+		img {
+			display: block;
+			margin: 40px 0;
+			width: 100%;
+			height: auto;
+		}
+
+		p {
+			font-size: 1.06em;
+			line-height: 1.5em;
+		}
+
+		span.gr {
+			color: #888;
+		}
+
+		> h4 {
+			display: inline-block;
+			position: relative;
+			font-size: 1.38em;
+			margin-bottom: 20px;
+
+			&::after {
+				content: "";
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				height: 10px;
+				background-color: rgba(88, 191, 255, 0.3);
+			}
+		}
+	}
+}

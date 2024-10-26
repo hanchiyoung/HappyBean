@@ -1,0 +1,233 @@
+@charset "UTF-8";
+
+$colors: (
+	primary: #41b25e,
+	secondary: #10c838,
+	third: #0f92e0,
+	base: #fafafa,
+	rgba: rgba(0, 0, 0, 0.11),
+);
+
+@mixin bgi($y, $x) {
+	background-image: url(./../../images/common/icons_ver_3.png);
+	background-size: 679px 400px;
+	background-position: $y $x;
+}
+
+@mixin flex($direction, $wrap, $justify) {
+	display: flex;
+	flex-direction: $direction;
+	flex-wrap: $wrap;
+	justify-content: $justify;
+	align-items: center;
+}
+
+section#join_wrap {
+	padding: 40px 0;
+	background-color: #fff;
+
+	h2 {
+		max-width: 800px;
+		margin: 0 auto;
+		font-size: 1.5em;
+	}
+	fieldset {
+		max-width: 800px;
+		margin: 0 auto;
+		padding: 40px 50px;
+		border: 1px solid map-get($map: $colors, $key: rgba);
+
+		table {
+			width: 100%;
+			tr {
+				height: 70px;
+			}
+
+			th {
+				text-align: left;
+
+				label {
+					display: block;
+					position: relative;
+
+					&:after {
+						content: " *";
+						color: #ff8a49;
+						font-size: 0.8em;
+					}
+				}
+			}
+
+			td {
+				padding: 10px;
+
+				input {
+					&[type="password"],
+					&[type="text"] {
+						width: 100%;
+						height: 50px;
+						padding: 10px 20px;
+						border: 1px solid map-get($map: $colors, $key: rgba);
+						box-sizing: border-box;
+					}
+
+					&:focus {
+						border: none;
+						outline: 1px solid map-get($map: $colors, $key: primary);
+					}
+
+					&::placeholder {
+						color: #ccc;
+						font-size: 1em;
+						font-weight: 500;
+					}
+
+					&[type="radio"] {
+						margin-left: 10px;
+						margin-right: 5px;
+						opacity: 0;
+
+						& + label {
+							display: inline-block;
+							position: relative;
+							// padding-left: 30px;
+
+							&::after {
+								content: "";
+								display: block;
+								position: absolute;
+								top: 50%;
+								left: -30px;
+								margin-top: -14px;
+								width: 28px;
+								height: 28px;
+								background-image: url(./../../images/common/icons.png);
+								background-size: 807px 758px;
+								background-position: -174px -571px;
+								transform: scale(0.7);
+							}
+						}
+
+						&:checked + label::after {
+							background-position: -210px -571px;
+						}
+					}
+				} //end of input
+			}
+		} //end of table
+
+		.btn {
+			height: 50px;
+			color: map-get($map: $colors, $key: primary);
+			font-weight: 600;
+			outline: none;
+
+			&.style_1 {
+				width: 100%;
+				background-color: #fff;
+				border: 1px solid map-get($map: $colors, $key: primary);
+			}
+
+			&.style_2 {
+				width: 100%;
+        color: #fff;
+				background-color: map-get($map: $colors, $key: primary);
+			}
+		}
+	} //form
+
+	h3 {
+		padding-top: 50px;
+	}
+
+	.agree_list {
+		padding: 20px 0;
+		li {
+			height: 50px;
+			line-height: 50px;
+
+			&.list_head {
+				height: 60px;
+				line-height: 60px;
+				border: 1px solid;
+				border-color: #ddd transparent #ddd transparent;
+			}
+		}
+
+		input[name="agree"] {
+			margin-left: 10px;
+			margin-right: 5px;
+			opacity: 0;
+
+			& + label {
+				display: inline-block;
+				position: relative;
+        font-size: 0.88em;
+				// padding-left: 30px;
+
+				&::after {
+					content: "";
+					display: block;
+					position: absolute;
+					top: 50%;
+					left: -30px;
+					margin-top: -14px;
+					width: 28px;
+					height: 28px;
+					background-image: url(./../../images/common/icons.png);
+					background-size: 807px 758px;
+					background-position: -174px -571px;
+					transform: scale(0.7);
+				}
+			}
+
+			&:checked + label::after {
+				background-position: -210px -571px;
+			}
+		}
+
+		label {
+			position: relative;
+			margin-right: 10px;
+
+			span {
+				display: inline-block;
+				margin-left: 5px;
+				color: #ff8a49;
+				font-size: 0.75em;
+			}
+
+			
+		}
+
+		.trm_view {
+			display: inline-block;
+			padding: 3px 5px;
+			color: #888;
+			font-size: 0.75em;
+			line-height: 20px;
+			text-align: center;
+			background-color: map-get($map: $colors, $key: base);
+      border: 1px solid map-get($map: $colors, $key: rgba);
+		}
+	} //.agree_list
+
+	p.att {
+		max-width: 800px;
+		margin: 0 auto;
+		padding: 10px 0;
+		color: #888;
+		font-size: 0.8em;
+		font-weight: 600;
+		text-align: right;
+
+		> span {
+			color: #ff8a49;
+			font-weight: 400;
+		}
+	}
+} //end of section
+
+footer {
+	margin: 0;
+}

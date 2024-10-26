@@ -1,0 +1,154 @@
+@charset "UTF-8";
+
+body {
+	overflow: scroll;
+}
+
+#wrap {
+	position: relative;
+
+	width: 1060px;
+	margin: 0 auto;
+	padding: 50px;
+
+	border: none;
+	/* border: 1px solid #000; */
+}
+
+section {
+	display: inline-block;
+	/* overflow: hidden; */
+	position: relative;
+
+	width: 100%;
+}
+
+section h2 {
+	margin-bottom: 10px;
+}
+
+section > ul:first-of-type,
+section > div:last-of-type {
+	display: flex;
+	flex-flow: column wrap;
+
+	color: #828282;
+
+	border: 1px solid #e5e5e5;
+}
+
+section > ul:first-of-type li {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	width: 100%;
+	padding: 1.2em;
+
+	color: #202020;
+}
+
+section > ul:first-of-type p {
+	padding-right: 2.2em;
+}
+/* 
+section span {
+	padding: 4px;
+
+	font-size: 1em;
+}
+
+section > ul:first-of-type span:first-of-type {
+	margin-right: 5px;
+
+	color: #ed5a5a;
+	font-size: 0.9em;
+
+	border: 1px solid #ed5a5a;
+	border-radius: 8px;
+}
+ */
+
+section > div:last-of-type span:first-of-type {
+	margin-right: 5px;
+	padding: 5px 15px;
+
+	color: #828282;
+	font-size: 0.9em;
+
+	border: 1px solid #d9d9d9;
+}
+
+section > div:last-of-type div {
+	color: #828282;
+	font-size: 0.9em;
+}
+/* 
+section span:nth-of-type(2) {
+	position: absolute;
+	right: 100px;
+
+	color: #828282;
+}
+
+section span:last-of-type {
+	position: absolute;
+	right: 4px;
+} */
+
+.main {
+	padding: 20px;
+
+	line-height: 1.4;
+
+	border-right: 1px solid #e5e5e5;
+	border-left: 1px solid #e5e5e5;
+
+	/* list-style-position: outside; */
+}
+/* 
+.main ul {
+	list-style-position: inside;
+}
+
+.main li {
+	list-style-image: url('../images/dot.png');
+	list-style-position: inside;
+} */
+
+section > p > a {
+	display: block;
+
+	width: 100px;
+	height: 50px;
+	margin: 20px auto;
+
+	color: #ffffff;
+	font-size: 1.3em;
+
+	text-align: center;
+	line-height: 50px;
+
+	background-color: #828282;
+
+	border: 1px solid #757575;
+}
+
+form input {
+	/* display: inline-block; */
+	float: right;
+	position: relative;
+
+	width: 100px;
+	height: 40px;
+	margin: 10px;
+
+	font-size: 1em;
+	text-align: center;
+
+	background-color: greenyellow;
+
+	border: 1px solid #000;
+
+	cursor: pointer;
+}

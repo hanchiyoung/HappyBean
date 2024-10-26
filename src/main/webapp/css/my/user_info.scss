@@ -1,0 +1,412 @@
+@charset "utf-8";
+$colors: (
+  primary: #41b25e,
+  secondary: #10c838,
+  third: #0f92e0,
+  base: #fafafa,
+  rgba: rgba(0, 0, 0, 0.11),
+);
+
+@mixin flex($direction, $wrap, $justify) {
+  display: flex;
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+  justify-content: $justify;
+  align-items: center;
+}
+
+@mixin bgi($y, $x) {
+  background-image: url(./../../images/common/icons.png);
+  background-size: 807px 758px;
+  background-position: $y $x;
+}
+
+#wrap.w_max {
+  @include flex(row, nowrap, space-between);
+  gap: 30px;
+  padding-top: 50px;
+}
+section#user_info_list_wrap.w_max {
+  align-self: flex-start;
+  background-color: map-get($map: $colors, $key: base);
+  border: 1px solid map-get($map: $colors, $key: rgba);
+
+  div.user_name_box {
+    @include flex(column, wrap, center);
+    width: 220px;
+    height: 270px;
+
+    div.icon {
+      width: 162px;
+      height: 162px;
+      @include bgi(-584px, -52px);
+      transform: scale(0.8);
+    }
+    > h2 {
+      font-size: 1em;
+      margin-bottom: 10px;
+
+      & + p {
+        color: #888;
+        font-size: 0.75em;
+        line-height: 1.5em;
+        text-align: center;
+      }
+    }
+  } //end of div.user_name_box
+
+  div.user_info_box {
+    padding: 20px 20px 0;
+    background-color: map-get($map: $colors, $key: primary);
+    border-top: 1px solid map-get($map: $colors, $key: rgba);
+
+    ul.info_list {
+      li {
+        height: 30px;
+
+        &.total {
+          height: 50px;
+          line-height: 50px;
+          border-top: 1px solid map-get($map: $colors, $key: rgba);
+
+          strong.total_sum {
+            font-size: 1.5em;
+          }
+        }
+
+        &.recharge_bean {
+          height: 50px;
+          > a {
+            @include flex(row, nowrap, center);
+            width: 100%;
+            height: 30px;
+            color: map-get($map: $colors, $key: primary);
+            font-weight: 600;
+            background-color: #fff;
+            border-radius: 5px;
+          }
+        }
+
+        > a {
+          @include flex(row, nowrap, space-between);
+          color: #fff;
+          font-size: 0.85em;
+          font-weight: 500;
+        }
+      }
+    }
+  } //end of div.user_info_box
+
+  nav.user_menu_list_box {
+    padding: 20px 30px;
+
+    > ul#user_menu_list {
+      > li {
+        border-bottom: 1px solid map-get($map: $colors, $key: rgba);
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        &.current {
+          > a {
+            color: map-get($map: $colors, $key: primary);
+            font-weight: 600;
+          }
+        }
+
+        > a {
+          display: block;
+          padding: 25px 0;
+          font-size: 1.1em;
+
+          &.sub_in {
+            padding-bottom: 10px;
+          }
+        }
+      } // end of li
+
+      ul.sub_menu_list {
+        padding-bottom: 20px;
+        > li {
+          > a {
+            display: inline-block;
+            position: relative;
+            color: #888;
+            font-size: 0.9em;
+            line-height: 30px;
+
+            &.new:after {
+              content: "NEW";
+              display: block;
+              position: absolute;
+              top: 50%;
+              right: -44px;
+              transform: translateY(-50%);
+              width: 34px;
+              height: 17px;
+              color: #fff;
+              font-size: 0.56em;
+              font-weight: 600;
+              line-height: 17px;
+              text-align: center;
+              background-color: map-get($map: $colors, $key: primary);
+              border-radius: 6px 0 6px 0;
+            }
+          }
+        }
+      }
+    }
+  } //end of nav.user_menu_list_box
+} //end of section#user_info_list_wrap.w_max
+
+section#user_activity_view_wrap {
+  margin-bottom: 15px;
+  border: 1px solid map-get($map: $colors, $key: rgba);
+
+  > div.user_activity {
+    @include flex(row, nowrap, space-between);
+    padding: 20px 40px;
+
+    > div {
+      align-self: flex-start;
+      width: 50%;
+      padding: 20px 0;
+
+      &.current_bean {
+        padding-right: 40px;
+        border-right: 1px solid rgba(0, 0, 0, 0.06);
+      }
+
+      &.total_donation {
+        padding-left: 40px;
+      }
+
+      .info_list {
+        > li {
+          &.list_head {
+            @include flex(row, nowrap, space-between);
+            margin-bottom: 10px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #f0f0f0;
+
+            > h3 {
+              font-size: 1.2em;
+            }
+
+            > p {
+              color: map-get($map: $colors, $key: primary);
+              strong {
+                font-size: 2.3em;
+              }
+            }
+          }
+
+          > a {
+            @include flex(row, nowrap, space-between);
+            padding-top: 20px;
+
+            > p:first-child {
+              display: inline-block;
+              position: relative;
+
+              &:after {
+                content: "";
+                display: block;
+                position: absolute;
+                top: 50%;
+                right: -15px;
+                transform: translateY(-50%) rotate(45deg);
+                width: 10px;
+                height: 10px;
+                border: 1px solid #ddd;
+                border-bottom: none;
+                border-left: none;
+              }
+            }
+
+            strong {
+              font-size: 1.25em;
+            }
+          }
+        }
+      }
+    }
+  } //end of div.user_activity  
+} // end of section#user_info_view_wrap
+
+article.event_ad_bar {
+  > a.ad_link {
+    @include flex(row, nowrap, space-between);
+    height: 90px;
+    padding: 0 20px;
+    background-color: #fafafa;
+    border: 1px solid map-get($map: $colors, $key: rgba);
+    border-radius: 8px;
+
+    > p.ico_frame {
+      order: 1;
+      width: 69px;
+      height: 55px;
+      @include bgi(-81px, -607px);
+    }
+
+    > h2 {
+      order: 2;
+      width: 75%;
+      font-size: 1.13em;
+      font-weight: 500;
+
+      > strong {
+        color: map-get($map: $colors, $key: primary);
+      }
+    }
+
+    > p.more_btn {
+      order: 3;
+      padding: 5px 10px;
+      color: #fff;
+      font-size: 0.88em;
+      background-color: map-get($map: $colors, $key: secondary);
+      border-radius: 3px;
+    }
+  }
+}//end of article.event_ad_bar
+
+section.act_history_wrap {
+
+  ul.hitory_list {
+    position: relative;
+    margin: 50px 0;
+    border-top: 1px solid map-get($map: $colors, $key: rgba);
+    border-bottom: 1px solid map-get($map: $colors, $key: rgba);
+
+    &::after {
+      content: attr(data-text);
+      @include flex(row, nowrap, center);
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 30px;
+      font-size: 1.1em;
+      font-weight: 600;
+      background-color: #fff;
+    }
+
+    > li {
+      @include flex(row, nowrap, space-between);
+      padding: 50px 0;
+      border-bottom: 1px solid map-get($map: $colors, $key: rgba);
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      div.ico_frame {
+        width: 72px;
+        height: 72px;
+        padding: 17px 18px;
+        border-radius: 50%;
+        box-sizing: border-box;
+        
+        &.disp {
+          border: 1px solid #ddd;
+
+          > p.ico_bg {
+            @include bgi(-479px, -390px);
+          }
+        }
+
+        &.use {
+          border: 1px solid map-get($map: $colors, $key: third);
+          > p.ico_bg {
+            @include bgi(-539px, -286px);
+          }
+        }
+
+        &.get {
+          border: 1px solid map-get($map: $colors, $key: secondary);
+          > p.ico_bg {
+            @include bgi(-565px, -390px);
+          }
+        }
+
+        > p.ico_bg {
+          width: 34px;
+          height: 36px;
+        }
+      }//end of div.ico_frame
+
+      div.user_history {
+        flex-grow: 2;
+        padding: 0 30px;
+
+        p, h3 {
+          padding: 3px 0;
+        }
+
+        p.comp_date {
+          color: #888; 
+          font-size: 0.9em;         
+        }
+
+        h3.history_title {
+          font-size: 1em;
+        }
+
+        p.desc {
+          font-size: 0.9em;
+        }
+      }//end of div.user_history
+
+      p.bean_num {
+        font-size: 0.9em;
+
+        &.minus:before {
+          content: '-';
+          margin-right: 5px;
+        }
+
+        &.plus:before {
+          content: '+';
+          margin-right: 5px;
+        }
+
+        > span {
+          margin-right: 3px;
+          font-size: 1.1em;
+          font-weight: 600;
+        }
+        
+      }
+    }
+  }//end of ul.hitory_list
+
+  div.history_more {    
+    height: 40px;
+    font-size: 0.9em;
+    background-color: #f0f0f0;
+    border: 1px solid map-get($map: $colors, $key: rgba);
+    > a {
+      @include flex(row, nowrap, center);
+      width: 100%;
+      height: inherit;
+
+      &:after {
+        content: '';
+        display: inline-block;
+        width: 7px;
+        height: 13px;
+        margin-left: 4px;
+        @include bgi(-212px, -738px);
+        vertical-align: middle;
+      }
+    }
+  
+  }
+
+
+}//end of section.act_history_wrap
+
