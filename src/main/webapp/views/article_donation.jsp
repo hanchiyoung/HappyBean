@@ -90,7 +90,7 @@
           System.out.println(donation.getStatus());
     	%>
       <li>
-        <a href="<%= fullUrl %>/sub/fundrasing/sub/fundrasing_sub1.jsp?subnum=<%= donation.getId() %>&donation_type=후원">
+        <a href="<%= fullUrl %>/sub/fundrasing/sub/fundrasing_sub1.jsp?subnum=<%= donation.getId() %>&donation_type=donation">
           <div class="thumb_container">
               <% if (isEnded) { %>
               <div class="ended_label">종료</div>
