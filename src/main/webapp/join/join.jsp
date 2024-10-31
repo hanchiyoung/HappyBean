@@ -50,6 +50,7 @@
             </td>
 
           </tr>
+
           <tr>
             <th scope="row"><label for="name">이름</label></th>
             <td colspan="2">

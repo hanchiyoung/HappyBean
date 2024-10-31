@@ -458,6 +458,14 @@ footer address img {
 	height: auto;
 }
 
+input[type=password]{
+	font-family: "돋움", "Verdana", "Geneva", "Tahoma", "sans-serif";
+}
+
+input[type=password]::placeholder{
+	font-family: "NanumSquare", "돋움", "Verdana", "Geneva", "Tahoma", "sans-serif";
+}
+
 /* 
 #41c982
 #e77c7c
